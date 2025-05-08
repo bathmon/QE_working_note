@@ -19,8 +19,34 @@ Following the README.md procedure, conduct the following commands
 ```
 $ mkdir ./build
 $ cd ./build
-$ cmake -DCMAKE_Fortran_COMPILER=mpif90 -DCMAKE_C_COMPILER=mpicc [-DCMAKE_INSTALL_PREFIX=/path/to/install] ..
+$ cmake -DCMAKE_Fortran_COMPILER=mpif90 -DCMAKE_C_COMPILER=mpicc ..
 $ make [-jN]
+$ cmake -DCMAKE_INSTALL_PREFIX=/path/to/install ..
 $ [make install]
 ```
-The commands in first two lines generate a clean environment for cmake. This procedure is called 'out-of-source build'. The third line provide a detailed requirement of `cmake` (Here I use "pwd" as /path/to/install, it seems it may cause problem if we miss the quotation marks?) and we should never miss the `..` in the end since the cmake file locates at the above shell. And forth line conducts the compile with -N cores, e.g. `make -j32`. We can use command `nproc` to find out how many cores we can use. The last line will install and generate the conductive file in the direcotry `/path/to/install`.
+The commands in first two lines generate a clean environment for cmake. This procedure is called 'out-of-source build'. The third line provide a detailed requirement of `cmake` and we should never miss the `..` in the end since the cmake file locates at the above shell. And forth line conducts the compile with -N cores, e.g. `make -j32`. We can use command `nproc` to find out how many cores we can use. The forth line provide the position of the executive file where we are about to generate them. The last line will install and generate the conductive file in the direcotry `/path/to/install`.  
+
+However, during the `make`, it reports several warning like
+```
+Warning: Type mismatch in argument ‘a’ at (1); passed COMPLEX(8) to REAL(8) [-Wargument-mismatch] 
+/fs1/home/wanghua/guozhch/soft/qe-7.2/q-e/KS_Solvers/CG/ccgdiagg_gpu.f90:383:19:
+
+         b0 = ksDdot( kdim2, cg_d(1), 1, ppsi_d(1), 1 ) / cg0**2
+```
+I don't know if it is incompatible between qe-7.x and compiler `Intel_compiler/19.1.2(default)`.  
+And the test is not successful, breaking down at the first iteration.
+```
+[th-hpc4-ln1:4080677:0:4080677] Caught signal 11 (Segmentation fault: invalid permissions for mapped object at address 0x7fffdb5b8f5c)
+==== backtrace (tid:4080677) ====
+0 0x00000000000534c9 ucs_debug_print_backtrace()  ???:0
+1 0x0000000000012b20 .annobin_sigaction.c()  sigaction.c:0
+=================================
+Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+Backtrace for this error:
+#0  0x14c497120171 in ???
+#1  0x14c49711f313 in ???
+#2  0x14c49518ab1f in ???
+#3  0x7fffdb5b8f5c in ???
+Segmentation fault (core dumped）
+```
