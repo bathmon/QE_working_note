@@ -5,3 +5,7 @@ Then use `conda install` to install all the requirement which is achievable for 
 And I notice when I install 'qsymm', conda automatically install a package called 'tinyarray' for me, which is necessary for the left package. But I has not figured out what it is right now.  
 The we can use `pip install` for the left two requirement, 'irrep<=1.8.2', 'irreptables', and our goal 'dft2kp'.  
 Till now, we have finished the first step.
+## patch the qe program
+Use `tar -zxvf qe-7.2-ReleasePack.tar.gz` to unzip the qe package. Notice the version of qe is limited to be 7.0, 7.1 and 7.2.  
+Download the patch with correct version from the [dft2kp's gitlab](https://gitlab.com/dft2kp/dft2kp/-/tree/main/patch?ref_type=heads).  
+But we should better clone this repository from [qe's github](https://github.com/QEF/q-e) with command `git clone https://github.com/QEF/q-e.git`. Then we can use all the git command. It's better to check all the version within by `git tag`, then checkout the correct version we want by `git checkout qe-7.2`. Then this repository stays in the version 'qe-7.2'.
