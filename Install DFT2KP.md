@@ -12,7 +12,7 @@ But we should better clone this repository from [qe's github](https://github.com
 Then we can use the patch file by command `git apply path/to/qe2kp-7.2.patch`. Before we actually do that, we (a) use `git describe --tags` to ensure the version of repository is correct (b) should use `git apply --check path/to/qe2kp-7.2.patch` or `git apply --stat path/to/qe2kp-7.2.patch` to make sure our patch can be successfully applied. If this patch is suitable, the command `git apply --check path/to/qe2kp-7.2.patch` will provide the content it modified.  
 Generally, the command `git apply path/to/qe2kp-7.2.patch` generates no information. But I found that if we actually use the  `git apply --check path/to/qe2kp-7.2.patch` again after applying the patch, it reports an error which should be another sign of successful application.
 ## Make the patched QE program
-**My first try** 
+### My first try ###
 Here we use **intel oneapi** to compile the QE program. First we need to find the directory of intel oneapi (cd /fs1/software/intel/oneapi) use `source setvars.sh` to acticate oneapi.   
 Following the README.md procedure, conduct the following commands
 ```
@@ -50,7 +50,7 @@ Backtrace for this error:
 Segmentation fault (core dumped）
 ```
 
-**My second try** 
+### My second try ###
 Here I use the method published by [AronHung](https://www.bilibili.com/opus/782400564586610696) 
 We need to first find our which module should we use. To do this, we can use command `module avail` or simply `module av` to find out all the module we can use. Then, use command `module purge` to clean the loaded module for a clean environment for compile.  
 Here we adopt these modules for compile
