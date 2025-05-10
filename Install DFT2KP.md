@@ -153,18 +153,18 @@ We first use `module purge` the make sure our environment is clean and use `modu
 The detailed process of a dft2kp job testing can be find in [the document of dft2kp](https://dft2kp.gitlab.io/dft2kp/main/quickstart.html)  
 The final output for graphene is
 ```
-Space group  191 : P6/mmm                                                                             
-Group of the k-vector: <code not ready>                                                               
-Verifying set A: [3, 4]                                                                               
-Band indices: [3, 4] Irreps: (K6) Degeneracy: 2                                                       
-Matrix([[c0 + c3*k_z**2 + c4*k_x**2 + c4*k_y**2, -c1*k_x + I*c1*k_y + c2*k_x**2/2 + I*c2*k_x*k_y - c2*
-k_y**2/2], [-c1*k_x - I*c1*k_y + c2*k_x**2/2 - I*c2*k_x*k_y - c2*k_y**2/2, c0 + c3*k_z**2 + c4*k_x**2 + c4*k_y**2]])                                                                                        cn      a.u. (Ry, a0)    with (eV, nm)  units    k powers                                             
-----  ---------------  ---------------  -------  ----------                                           
-c0          -1.39e-05        -0.00019   eV       0                                                    
-c1           0.719            0.517     eV.nm    x,y                                                  
-c2          -1.65            -0.0628    eV.nm²   xx,xy,yy                                            
-c3           0.0282           0.00107   eV.nm²   zz                                                  
-c4          -0.00616         -0.000235  eV.nm²   xx,yy
+Space group  191 : P6/mmm
+Group of the k-vector: <code not ready>
+Verifying set A: [3, 4]
+Band indices: [3, 4] Irreps: (K6) Degeneracy: 2
+Matrix([[c0 + c2*k_x**2 + c2*k_y**2 + c4*k_z**2, -c1*k_x + I*c1*k_y + c3*k_x**2 + 2*I*c3*k_x*k_y - c3*k_y**2], [-c1*k_x - I*c1*k_y + c3*k_x**2 - 2*I*c3*k_x*k_y - c3*k_y**2, c0 + c2*k_x**2 + c2*k_y**2 + c4*k_z*
+*2]])cn      a.u. (Ry, a0)    with (eV, nm)  units    k powers
+----  ---------------  ---------------  -------  ----------
+c0          -1.39e-05        -0.00019   eV       0
+c1           0.719            0.517     eV.nm    x,y
+c2          -0.00616         -0.000235  eV.nm²   xx,yy
+c3          -0.824           -0.0314    eV.nm²   xx,xy,yy
+c4           0.0282           0.00107   eV.nm²   zz
 
 ```
 consistent with the result in the document (slight different because of the different definition of parameters).
