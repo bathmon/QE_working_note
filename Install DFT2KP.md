@@ -167,4 +167,5 @@ c3          -0.824           -0.0314    eV.nm²   xx,xy,yy
 c4           0.0282           0.00107   eV.nm²   zz
 
 ```
-consistent with the result in the document (slight different because of the different definition of parameters).
+consistent with the result in the document (slight different because of the different definition of parameters).  
+The comparison between DFT result and kp model is list in ![DFT result v.s. kp model of graphene](./graphene_example/graphene.png)
